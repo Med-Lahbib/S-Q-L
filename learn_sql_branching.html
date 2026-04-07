@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn SQL — Interactive Visual Playground</title>
+  <meta name="description" content="Master SQL with interactive exercises, visual animations, and gamified learning. 46 exercises from basics to advanced." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div id="app">
+  <!-- ═══════════ TOP BAR ═══════════ -->
+  <div id="topbar">
+    <div class="logo">SQL<span>Quest</span></div>
+    <button id="nav-map-btn">🗺️ Map</button>
+    <button id="nav-achievements-btn">🏅 Achievements</button>
+    <div class="xp-bar-wrap">
+      <div class="xp-label">PROGRESS</div>
+      <div class="xp-bar"><div class="xp-fill" style="width:0%"></div></div>
+      <div class="xp-text">0 XP</div>
+    </div>
+    <div class="streak-badge">🔥 0</div>
+  </div>
+
+  <!-- ═══════════ VIEW CONTAINER ═══════════ -->
+  <div id="view-container">
+
+    <!-- MAP VIEW -->
+    <div id="map-view" class="view visible">
+      <div class="map-header">
+        <h2>SQL Quest</h2>
+        <p>Master SQL through 46 interactive challenges</p>
+      </div>
+      <div id="map-content"></div>
+    </div>
+
+    <!-- LESSON VIEW -->
+    <div id="lesson-view" class="view hidden">
+      <!-- Header -->
+      <div id="lesson-header">
+        <button id="back-btn">← Back</button>
+        <div id="lesson-num"></div>
+        <div id="lesson-title-main"></div>
+        <button id="learn-btn">📖 Learn This Concept</button>
+        <div id="lesson-nav">
+          <button class="nav-arrow" id="prev-btn" title="Previous">‹</button>
+          <button class="nav-arrow" id="next-btn" title="Next">›</button>
+        </div>
+      </div>
+
+      <!-- Left: Visual + Desc -->
+      <div id="visual-panel">
+        <div id="desc-box">
+          <div id="lesson-desc"></div>
+          <div id="lesson-task"></div>
+        </div>
+        <div id="visual-area"></div>
+      </div>
+
+      <!-- Right: Editor -->
+      <div id="editor-panel">
+        <div id="schema-bar"></div>
+        <div id="editor-wrap">
+          <textarea id="sql-editor" spellcheck="false" placeholder="Write your SQL query here..."></textarea>
+        </div>
+        <div id="hint-box"></div>
+        <div id="editor-toolbar">
+          <button id="run-btn">Run ▶</button>
+          <button id="hint-btn">💡 Hint</button>
+          <button id="solution-btn">🔑 Solution</button>
+          <div id="feedback"></div>
+        </div>
+      </div>
+
+      <!-- Bottom: Results -->
+      <div id="results-panel">
+        <div id="results-label">Results</div>
+        <div id="results-table-wrap">
+          <div id="empty-msg">Run a query to see results here.</div>
+          <table id="results-table" style="display:none"></table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACHIEVEMENTS VIEW -->
+    <div id="achievements-view" class="view hidden">
+      <div class="map-header">
+        <h2>🏅 Achievements</h2>
+        <p>Collect them all by mastering SQL</p>
+      </div>
+      <div class="achievements-grid" id="achievements-grid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Confetti Canvas -->
+<canvas id="confetti-canvas"></canvas>
+
+<!-- Toast Container -->
+<div id="toast-container"></div>
+
+<!-- TUTORIAL OVERLAY -->
+<div id="tutorial-overlay" class="hidden">
+  <div id="tutorial-box">
+    <div id="tutorial-header">
+      <div id="tutorial-title"></div>
+      <button id="tutorial-skip">Skip → Start Exercise</button>
+    </div>
+    <div id="tutorial-body">
+      <div id="tutorial-text"></div>
+      <div id="tutorial-visual"></div>
+    </div>
+    <div id="tutorial-footer">
+      <button class="tut-nav-btn" id="tut-prev-btn">← Back</button>
+      <div id="tutorial-dots"></div>
+      <button class="tut-nav-btn" id="tut-next-btn">Next →</button>
+    </div>
+  </div>
+</div>
+
+<!-- SPLASH OVERLAY -->
+<div id="splash-overlay" class="hidden">
+  <div id="splash-box">
+    <h2>Welcome to SQLQuest!</h2>
+    <p>Learn SQL through <b>46 interactive exercises</b> with visual animations, instant feedback, and gamified progression. Write real queries, watch tables transform, and become an SQL master!</p>
+    <button id="splash-start">🚀 Start Learning</button>
+  </div>
+</div>
+
+<!-- LEVEL COMPLETE OVERLAY -->
+<div id="complete-overlay" class="hidden">
+  <div id="complete-box">
+    <div class="emoji">🎉</div>
+    <h3 id="complete-msg">Awesome!</h3>
+    <p>You completed this exercise!</p>
+    <div class="xp-earned" id="complete-xp">+10 XP</div>
+    <div class="complete-btns">
+      <button id="back-to-map-btn">🗺️ Back to Map</button>
+      <button id="next-lesson-btn">Next Exercise →</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.2/sql-wasm.min.js"></script>
+<script src="exercises.js"></script>
+<script src="tutorials.js"></script>
+<script src="animations.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
